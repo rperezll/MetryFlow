@@ -1,0 +1,40 @@
+services:
+  database:
+    image: mongo:latest
+    container_name: metryflow-database
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./database/mongodb_data:/data/db
+    env_file:
+      - path: ./database/.env
+        required: false
+    networks:
+      - metryflow_network
+    profiles:
+      - database
+
+  backend:
+    build:
+      context: ./backend
+    container_name: metryflow-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    # depends_on:
+    #   - database
+    networks:
+      - metryflow_network
+    env_file:
+      - ./backend/.env
+    profiles:
+      - backend
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  metryflow_network:
+    driver: bridge

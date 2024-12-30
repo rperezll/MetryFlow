@@ -1,0 +1,12 @@
+# Python
+*.pyc
+__pycache__/
+# Environments
+*.env
+.env
+# Node
+node_modules
+dist
+package-lock.json
+# MongoDB
+mongodb_data

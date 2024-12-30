@@ -1,0 +1,30 @@
+{
+  "name": "metryflow-node",
+  "version": "1.0.0",
+  "description": "Metryflow telemetry data collection for NodeJS",
+  "author": {
+    "name": "rperezll",
+    "url": "https://github.com/rperezll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rperezll/Metryflow"
+  },
+  "license": "GPL-3.0",
+  "main": "dist/telemetry.js",
+  "scripts": {
+    "build": "tsup",
+    "link": "npm run build && npm link",
+    "get:links": "npm ls -g --depth=0 --link",
+    "dev": "npm run build && node dist/telemetry.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
